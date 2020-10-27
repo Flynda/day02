@@ -10,17 +10,6 @@ app.engine('hbs',
 )
 app.set('view engine', 'hbs')
 
-app.get('/roll',
-    (req, resp) => {
-        resp.status(200)
-        resp.type('text/html')
-        resp.render('roll', {
-            rollOne: rollDice(),
-            rollTwo: rollDice()
-        })
-    }
-)
-
 const rollDice = () => {
     let dice = Math.ceil(Math.random() * 6)
     switch (dice) {
@@ -53,10 +42,25 @@ const rollDice = () => {
     }
 }
 
+const roll = [
+    {roll: rollDice()},
+    {roll: rollDice()}
+]
+
+app.get('/roll',
+    (req, resp) => {
+        resp.status(200)
+        resp.type('text/html')
+        resp.render('roll', {
+            newRoll: roll
+        })
+    }
+)
 
 
-
-app.use(express.static(__dirname + '/dice-images'))
+app.use(
+    express.static(__dirname + '/dice-images')
+)
 
 app.use(
     (req, resp) => {
