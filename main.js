@@ -14,27 +14,27 @@ const rollDice = () => {
     let dice = Math.ceil(Math.random() * 6)
     switch (dice) {
         case 1:
-            return `<img src="../images/dado-1.png" alt="one">`
-            break;
-    
-        case 2:
-            return `<img src="../images/roll2.png" alt="two">`
-            break;
-        
-        case 3:
-            return `<img src="../images/three_dots.png" alt="three">`
-            break;
-        
-        case 4:
-            return `<img src="../images/four.png" alt="four">`
-            break;
-        
-        case 5:
-            return `<img src="../images/Five-Image.png" alt="five">`
+            return  "dado-1.png"
             break;
 
+        case 2:
+            return  'roll2.png'
+            break;
+
+        case 3:
+            return  'three_dots.png'
+            break;
+
+        case 4:
+            return  'four.png'
+            break;
+
+        case 5:
+            return  'Five-Image.png'
+            break;
+       
         case 6:
-            return `<img src="../images/dice-showing-6.png" alt="six">`
+            return 'dice-showing-6.png'
             break;
 
         default:
@@ -59,14 +59,14 @@ app.get('/roll',
 
 
 app.use(
-    express.static(__dirname + '/dice-images')
+    express.static(__dirname + '/static')
 )
 
 app.use(
     (req, resp) => {
         resp.status(200)
-        resp.type('text.html')
-        resp.render(__dirname + '/views/index.hbs')
+        resp.type('text/html')
+        resp.sendFile(__dirname + '/static/index.html')
     }
 )
 
