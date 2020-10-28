@@ -42,7 +42,7 @@ const rollDice = () => {
     }
 }
 
-let roll = [
+const roll = [
     {roll: rollDice()},
     {roll: rollDice()}
 ]
