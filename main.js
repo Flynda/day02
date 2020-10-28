@@ -42,7 +42,7 @@ const rollDice = () => {
     }
 }
 
-const roll = [
+let roll = [
     {roll: rollDice()},
     {roll: rollDice()}
 ]
@@ -64,7 +64,7 @@ app.use(
 
 app.use(
     (req, resp) => {
-        resp.status(200)
+        resp.status(404)
         resp.type('text/html')
         resp.sendFile(__dirname + '/static/index.html')
     }
