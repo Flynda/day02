@@ -42,17 +42,15 @@ const rollDice = () => {
     }
 }
 
-const roll = [
-    {roll: rollDice()},
-    {roll: rollDice()}
-]
-
 app.get('/roll',
     (req, resp) => {
         resp.status(200)
         resp.type('text/html')
         resp.render('roll', {
-            newRoll: roll
+            newRoll: [
+                {roll: rollDice()},
+                {roll: rollDice()}
+            ]
         })
     }
 )
